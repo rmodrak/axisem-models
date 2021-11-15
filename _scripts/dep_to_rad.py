@@ -52,8 +52,8 @@ def convert_dep_to_rad(lines):
 if __name__=='__main__':
 
 
-    input = 'ak135f_mdj2_celso.dep'
-    output = 'ak135f_mdj2_celso.rad'
+    input = 'mdj2_celso.dep'
+    output = 'mdj2_celso.rad'
 
     # read text file
     with open(input, 'r') as file:
