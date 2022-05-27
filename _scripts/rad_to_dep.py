@@ -3,8 +3,7 @@
 import re
 import sys
 
-from shared import _split, _parse, convert_units, convert_dep_to_rad
-
+from _shared import _split, _parse, convert_units, convert_rad_to_dep
 
 
 if __name__=='__main__':
@@ -12,7 +11,7 @@ if __name__=='__main__':
 
     for filename in sys.argv[1:]:
         input = filename
-        output = filename+'.rad'
+        output = filename+'.dep'
 
         # read text file
         with open(filename, 'r') as file:
@@ -27,20 +26,20 @@ if __name__=='__main__':
         columns = header_dict['COLUMNS']
 
         parts = columns.split(' ')
-        if parts[0]!='depth':
-            print(columns)
+        if parts[0]!='radius':
             raise Exception('Unexpected format')
 
 
         # convert units
         old=header_dict['UNITS']
         new='m'
+        print(old, new)
         header_dict, body = convert_units(header_dict, body, old, new)
 
 
         # convert depth to radius
-        body = convert_dep_to_rad(body, units=new)
-        columns = re.sub('depth', 'radius', columns)
+        body = convert_rad_to_dep(body, units=new)
+        columns = re.sub('radius', 'depth', columns)
         header_dict['COLUMNS'] = columns
 
 
@@ -52,8 +51,7 @@ if __name__=='__main__':
         lines.extend(header)
         lines.extend(body)
 
-        output = re.sub('.dep', '.rad', filename)
-        assert filename!=output
+        print('WRITING RESULTS TO\n%s' % output)
 
         with open(output, 'w') as file:
             file.writelines(lines)
