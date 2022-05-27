@@ -51,7 +51,7 @@ if __name__=='__main__':
         lines.extend(header)
         lines.extend(body)
 
-        print('WRITING RESULTS TO\n%s' % output)
+        print('\nWRITING TO\n%s\n' % output)
 
         with open(output, 'w') as file:
             file.writelines(lines)

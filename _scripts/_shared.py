@@ -8,7 +8,6 @@ def _split(lines, length=4, sep=None):
     body = []
 
     for _i, line in enumerate(lines):
-        print(_i, line)
         if _i < length:
             header += [line]
         else:

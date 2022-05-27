@@ -3,7 +3,7 @@
 import re
 import sys
 
-from shared import _split, _parse, convert_units, convert_dep_to_rad
+from _shared import _split, _parse, convert_units, convert_dep_to_rad
 
 
 
@@ -23,12 +23,10 @@ if __name__=='__main__':
         header, body = _split(lines)
 
         header_dict = _parse(header)
-        print(header_dict)
         columns = header_dict['COLUMNS']
 
         parts = columns.split(' ')
         if parts[0]!='depth':
-            print(columns)
             raise Exception('Unexpected format')
 
 
@@ -52,8 +50,8 @@ if __name__=='__main__':
         lines.extend(header)
         lines.extend(body)
 
-        output = re.sub('.dep', '.rad', filename)
-        assert filename!=output
+
+        print('\nWRITING TO\n%s\n' % output)
 
         with open(output, 'w') as file:
             file.writelines(lines)
