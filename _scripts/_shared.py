@@ -90,4 +90,12 @@ def convert_rad_to_dep(lines, units='m'):
     return new
 
 
+def lists_to_dicts(column_labels, rows):
+    dicts = list()
+    for row in rows:
+        dicts.append({})
+        for _i, val in enumerate(row):
+            key=column_labels[_i]
+            dicts[-1].update({key: val})
+    return dicts
 
