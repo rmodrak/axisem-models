@@ -124,7 +124,13 @@ if __name__=='__main__':
 
             axes[_i].invert_yaxis()
 
+        
+        # save figure
+        if args.max_depth:
+            filename = f'{filename}.0-{int(round(args.max_depth)):d}km'
+
         print('  saving %s\n' % (filename+'.png'))
+
         pyplot.savefig(filename+'.png')
 
 
