@@ -1,6 +1,5 @@
-#!/usr/bin/env python
 
-# TODO - ADD CITATIONS
+# see Dahlen and Tromp, 2008, eqs. 9.59 and 9.60
 
 
 def Q_alpha(Q_kappa, Q_mu, alpha, beta):
